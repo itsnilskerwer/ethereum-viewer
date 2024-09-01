@@ -13,4 +13,4 @@ User-agent: Omgilibot
 User-Agent: FacebookBot
 Disallow: /
 
-Sitemap: https://noartroom.github.io/blog/sitemap-index.xml
+Sitemap: https://itsnilskerwer.github.io/ethereum-viewer/sitemap-index.xml
