@@ -29,7 +29,7 @@
   :global(.dark) .moon { fill: white; }
 </style>
 
-<script type="module">
+<script type="module">  /* is treated as is-inline redered because contains an attribute. */
   document.addEventListener('astro:page-load', () => {
     const theme = (() => {
       if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
