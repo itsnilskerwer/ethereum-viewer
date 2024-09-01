@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
 	/* site: 'https://noartroom.github.io/blog', */
 	site: 'https://itsnilskerwer.github.io/ethereum-viewer/',
-	/* trailingSlash: 'ignore', */
+	 trailingSlash: 'ignore', 
 /* 	trailingSlash: 'never',
  */	
 	integrations: [sitemap()]
