@@ -1,0 +1,63 @@
+---
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseHead /> component.
+import '../styles/global.css';
+
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+	title: string;
+	description: string;
+/* 	todo: image?:string and define hero image (?) */
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const { title, description } = Astro.props;
+---
+
+	<!-- Global Metadata -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!-- 	apparently not supported for firefox, android, opera: check nemanjam whether to change theming -->	
+	<meta name="theme-color" content="#c1ddf9" media="(prefers-color-scheme: light)" />
+	<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+
+	<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+	<!-- todo: make 3 icons with sizes:"180x180" , 32X32, 16X16 -->	
+	<meta name="generator" content={Astro.generator} />
+
+
+	<base href="/" />
+
+
+
+	<!-- Font preloads todo: check if needed at all - and decide on a better font-->
+	<!-- <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
+	<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin /> -->
+
+	<!-- Canonical URL -->
+	<link rel="canonical" href={canonicalURL} />
+	<link rel="manifest" href="/manifest.json" />
+
+	<!-- Primary Meta Tags -->
+	<title>{title}</title>
+	<meta name="title" content={title} />
+	<meta name="description" content={description} />
+
+	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
+
+	<ViewTransitions /> <!-- todo: add fallback="none" ? -->
+<!-- This is intentionally inlined to avoid FOUC todo: test whether flash appears on browsers with preference dark -->
+<!-- <script is:inline>
+	const root = document.documentElement
+	const theme = localStorage.getItem('theme')
+	if (
+	  theme === 'dark' ||
+	  (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+	) {
+	  root.classList.add('theme-dark')
+	} else {
+	  root.classList.remove('theme-dark')
+	}
+  </script> -->

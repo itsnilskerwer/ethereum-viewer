@@ -1,4 +1,12 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+	/* site: 'https://noartroom.github.io/blog', */
+	site: 'https://ethereum-viewer.github.io/',
+	/* trailingSlash: 'ignore', */
+/* 	trailingSlash: 'never',
+ */	/* base: '/blog',  */
+	integrations: [sitemap()]
+});

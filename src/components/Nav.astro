@@ -1,0 +1,31 @@
+---
+import HeaderLink from './HeaderLink.astro';
+
+/* todo remove link and add dynamic headings */
+/*
+todo add and display blog title variable / or switch BLOG to HOME when url is not /blog anymore, but instead a post
+ */
+---
+
+<style>
+  nav {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    font-weight: 700;
+    /* justify-content: flex-end; */
+    text-transform: uppercase;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    margin-left: 1em;
+    margin-right: 1em;
+    min-width: 70px;
+  }
+</style>
+
+<nav>
+  <HeaderLink href='/'>NOARTROOM BLOG</a> 
+</nav>

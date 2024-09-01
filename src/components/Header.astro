@@ -1,0 +1,25 @@
+---
+/* todo: refactor a la nemanjam.github.io
+import { SITE_TITLE } from '../consts'; */
+import ThemeIcon from './ThemeIcon.astro';
+import Logo from "./Logo.astro";
+import Nav from "./Nav.astro";
+
+const { current = '' } = Astro.props;
+---
+
+<style>
+	header {
+		display: flex;
+		margin: 0 auto;
+		justify-content: flex-end;
+		max-width: 1400px; /* remove to make header full-width even on extra wide screens (1400px) */
+		width: 100%; /* remove for nice dissappearing logo effect (has to be tested) */
+		box-shadow: 0 4px 8px rgba(var(--black), 5%);
+	}
+</style>
+<header>
+	<Logo />
+	<Nav current={current} />
+	<ThemeIcon /> 
+</header>

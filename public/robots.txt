@@ -1,4 +1,16 @@
-# Example: Allow all bots to scan and index your site.
-# Full syntax: https://developers.google.com/search/docs/advanced/robots/create-robots-txt
 User-agent: *
-Allow: /
+Disallow:
+
+#
+# Disallow decidedly bad actors…
+#
+User-agent: undici
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: CCBot
+User-agent: Google-Extended
+User-agent: Omgilibot
+User-Agent: FacebookBot
+Disallow: /
+
+Sitemap: https://noartroom.github.io/blog/sitemap-index.xml
