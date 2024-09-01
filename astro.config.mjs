@@ -7,6 +7,6 @@ export default defineConfig({
 	site: 'https://itsnilskerwer.github.io/ethereum-viewer',
 	/* trailingSlash: 'ignore', */
 /* 	trailingSlash: 'never',
- */	/* base: '/blog',  */
+ */	 base: '/',  
 	integrations: [sitemap()]
 });
