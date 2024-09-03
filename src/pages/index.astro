@@ -7,8 +7,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import FormattedDate from '../components/FormattedDate.astro';
 
 // GET REQUEST (SIMPLE QUERIES)
-const encodedGetQuery = encodeURIComponent('CONSTRUCT WHERE { ?s ?p ?o . }'); // SELECT returns tabular format e.g. csv
-const url = `https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query?query=${encodedGetQuery}`;
+// const encodedGetQuery = encodeURIComponent('CONSTRUCT WHERE { ?s ?p ?o . }'); // SELECT returns tabular format e.g. csv
+// const url = `https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query?query=${encodedGetQuery}`;
 
 // Send the GET request
  /*  const getResponse = await fetch(url, {
@@ -51,7 +51,6 @@ const postResponse = await fetch('https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.ap
     },
     body: sparqlQuery
   });
-
   if (!postResponse.ok) {
     throw new Error(`Response status: ${postResponse.status}`);
   }
