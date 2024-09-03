@@ -6,15 +6,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 /* import { getCollection } from 'astro:content'; */
 import FormattedDate from '../components/FormattedDate.astro';
 
-// init data const
-const turtleData = '';
 // GET REQUEST (SIMPLE QUERIES)
 const encodedGetQuery = encodeURIComponent('SELECT ?s ?p ?o WHERE { ?s ?p ?o . }');
 const url = `https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query?query=${encodedGetQuery}`;
 // const encodedPostQuery = encodeURIComponent('SELECT ?document ?date WHERE { ?document <http://example.org/authoringDate> ?date .} ORDER BY ASC(?date)');
 
 // Send the GET request
-try {
+
   const response = await fetch(url, {
     method: 'GET',
     headers: {
@@ -28,9 +26,7 @@ try {
   // const jsonData = await response.json(); // Handle JSON response
   const turtleData = await response.text(); // Handle Turtle response as text
   console.log(turtleData);
-} catch (error) {
-  console.error('Error fetching data:', error);
-}
+
 
 // POST REQUEST (COMPLEX QUERIES)
 
