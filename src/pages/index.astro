@@ -26,7 +26,7 @@ const url = `https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-
   console.log(turtleDataAll);
 
 // POST REQUEST (COMPLEX QUERIES)
-const postQueryAuthors = `
+const sparqlQuery = `
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     PREFIX fx: <http://sparql.xyz/facade-x/ns/>
 
@@ -49,7 +49,7 @@ const postResponse = await fetch('https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.ap
       'Content-Type': 'application/sparql-query',
       'Accept': 'text/turtle'
     },
-    body: postQueryAuthors
+    body: sparqlQuery
   });
 
   if (!postResponse.ok) {
