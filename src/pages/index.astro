@@ -7,12 +7,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import FormattedDate from '../components/FormattedDate.astro';
 
 // GET REQUEST (SIMPLE QUERIES)
-const encodedGetQuery = encodeURIComponent('SELECT ?s ?p ?o WHERE { ?s ?p ?o . }');
+const encodedGetQuery = encodeURIComponent('CONSTRUCT ?s ?p ?o WHERE { ?s ?p ?o . }'); // SELECT returns tabular format e.g. csv
 const url = `https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query?query=${encodedGetQuery}`;
-// const encodedPostQuery = encodeURIComponent('SELECT ?document ?date WHERE { ?document <http://example.org/authoringDate> ?date .} ORDER BY ASC(?date)');
+// const postQuery = `SELECT ?document ?author WHERE { ?document <http://example.org/hasAuthor> ?author . }`;
 
 // Send the GET request
-
   const response = await fetch(url, {
     method: 'GET',
     headers: {
@@ -29,7 +28,25 @@ const url = `https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-
 
 
 // POST REQUEST (COMPLEX QUERIES)
+/* try {
+  const response = await fetch('https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/sparql-query', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/sparql-query',
+      'Accept': 'application/sparql-results+json', // Expecting a JSON response
+    },
+    body: query, // Send the SPARQL query in the body of the request
+  });
 
+  if (!response.ok) {
+    throw new Error(`Response status: ${response.status}`);
+  }
+
+  const jsonData = await response.json(); // Handle JSON response
+  console.log(jsonData);
+} catch (error) {
+  console.error('Error fetching data:', error);
+} */
 	
 /* const posts = (await getCollection('blog')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
