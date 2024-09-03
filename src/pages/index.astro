@@ -7,7 +7,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import FormattedDate from '../components/FormattedDate.astro';
 
 // GET REQUEST (SIMPLE QUERIES)
-const encodedGetQuery = encodeURIComponent('CONSTRUCT ?s ?p ?o WHERE { ?s ?p ?o . }'); // SELECT returns tabular format e.g. csv
+const encodedGetQuery = encodeURIComponent('CONSTRUCT WHERE { ?s ?p ?o . }'); // SELECT returns tabular format e.g. csv
 const url = `https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query?query=${encodedGetQuery}`;
 // const postQuery = `SELECT ?document ?author WHERE { ?document <http://example.org/hasAuthor> ?author . }`;
 
