@@ -11,7 +11,7 @@ const encodedGetQuery = encodeURIComponent('CONSTRUCT WHERE { ?s ?p ?o . }'); //
 const url = `https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query?query=${encodedGetQuery}`;
 
 // Send the GET request
-  const getResponse = await fetch(url, {
+ /*  const getResponse = await fetch(url, {
     method: 'GET',
     headers: {
       // 'Accept': 'application/sparql-results+json', 
@@ -23,7 +23,7 @@ const url = `https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-
   }
   // const jsonData = await response.json(); // Handle JSON response
   const turtleDataAll = await getResponse.text(); // Handle Turtle response as text
-  console.log(turtleDataAll);
+  console.log(turtleDataAll); */
 
 // POST REQUEST (COMPLEX QUERIES)
 const sparqlQuery = `
