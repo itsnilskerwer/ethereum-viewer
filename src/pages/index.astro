@@ -3,12 +3,38 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getCollection } from 'astro:content';
+/* import { getCollection } from 'astro:content'; */
 import FormattedDate from '../components/FormattedDate.astro';
 
-const posts = (await getCollection('blog')).sort(
+// init data const
+const turtleData = '';
+// GET REQUEST (SIMPLE QUERIES)
+const encodedQuery = encodeURIComponent('SELECT ?s ?p ?o WHERE { ?s ?p ?o . }');
+const url = `http://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query?query=${encodedQuery}`;
+
+// Send the GET request
+try {
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      // 'Accept': 'application/sparql-results+json', 
+	  'Accept': 'text/turtle',
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`Response status: ${response.status}`);
+  }
+  // const jsonData = await response.json(); // Handle JSON response
+  const turtleData = await response.text(); // Handle Turtle response as text
+  console.log(turtleData);
+} catch (error) {
+  console.error('Error fetching data:', error);
+}
+	
+/* const posts = (await getCollection('blog')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+); */
+
 ---
 
 <!doctype html>
@@ -88,22 +114,25 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
-			<section>
+			<!-- <section>
 				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/${post.slug}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="hero image" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
+					{ posts.map((post) => (
+						<li>
+							<a href={`/${post.slug}/`}>
+								<img width={720} height={360} src={post.data.heroImage} alt="hero image" />
+								<h4 class="title">{post.data.title}</h4>
+								<p class="date">
+									<FormattedDate date={post.data.pubDate} />
+								</p>
+							</a>
+						</li>
+					))}
 				</ul>
+			</section> -->
+			<section>
+				<h2>Turtle Textarea</h2>
+				<p class="date"><FormattedDate date={new Date()} /></p>
+				<textarea id="turtle-textarea" readonly>{turtleData}</textarea>
 			</section>
 		</main>
 		<Footer />
