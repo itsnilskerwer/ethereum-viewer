@@ -7,6 +7,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import FormattedDate from '../components/FormattedDate.astro';
 
 // GET REQUEST (SIMPLE QUERIES)
+
 // const encodedGetQuery = encodeURIComponent('CONSTRUCT WHERE { ?s ?p ?o . }'); // SELECT returns tabular format e.g. csv
 // const url = `https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query?query=${encodedGetQuery}`;
 
@@ -26,12 +27,7 @@ import FormattedDate from '../components/FormattedDate.astro';
   console.log(turtleDataAll); */
 
 // POST REQUEST (COMPLEX QUERIES)
-const sparqlQuery = `SELECT {
-  ?s ?p ?o .
-} 
-WHERE {
-  ?s ?p ?o .
-}`;
+const sparqlQuery = `CONSTRUCT WHERE { ?s ?p ?o . }`;
 /* PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX fx: <http://sparql.xyz/facade-x/ns/> CONSTRUCT { ?document fx:title ?title ; fx:author ?author .} WHERE { ?document a fx:YamlFrontMatter ; rdf:_1 ?content . BIND(REPLACE(STR(?content), "(?s).*title: ([^\n]+).*", "$1") AS ?title) BIND(REPLACE(STR(?content), "(?s).*author: ([^\n]+).*", "$1") AS ?author) } */
 /* PREFIX fx: <http://sparql.xyz/facade-x/ns/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -46,6 +42,7 @@ WHERE {
             fx:created ?created .
 }
 ORDER BY ASC(?created) */
+
 // Send the POST request
 const postResponse = await fetch('https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query', {
     method: 'POST',
@@ -59,8 +56,8 @@ const postResponse = await fetch('https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.ap
     throw new Error(`Response status: ${postResponse.status}`);
   }
 
-  const turtleDataAuthors = await postResponse.text();
-  console.log(turtleDataAuthors);
+  const turtleData = await postResponse.text();
+  console.log(turtleData);
 	
 /* const posts = (await getCollection('blog')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
@@ -163,7 +160,7 @@ const postResponse = await fetch('https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.ap
 			<section>
 				<h2>Turtle Textarea</h2>
 				<p class="date"><FormattedDate date={new Date()} /></p>
-				<textarea id="turtle-textarea" readonly>{turtleDataAuthors}</textarea>
+				<textarea id="turtle-textarea" readonly>{turtleData}</textarea>
 			</section>
 		</main>
 		<Footer />
