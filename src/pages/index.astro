@@ -6,6 +6,33 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 /* import { getCollection } from 'astro:content'; */
 import FormattedDate from '../components/FormattedDate.astro';
 
+  const query = `
+   CONSTRUCT WHERE { ?s ?p ?o . }
+  `;
+  
+  const url = "http://localhost:3030/EIPS/sparql";
+  
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/sparql-query",
+	  "Accept": "text/turtle"
+    },
+    body: query,
+  });
+  if (!response.ok) {
+    throw new Error(`Response status: ${response.status}`);
+  }
+  console.log(response);
+  const turtleData = await response.text(); // or .json() 
+  console.log(turtleData);
+
+
+
+
+
+/*   --------------------- SPARQL-ANYTHING tests ------------------ */
+
 // GET REQUEST (SIMPLE QUERIES)
 
 // const encodedGetQuery = encodeURIComponent('CONSTRUCT WHERE { ?s ?p ?o . }'); // SELECT returns tabular format e.g. csv
@@ -27,7 +54,7 @@ import FormattedDate from '../components/FormattedDate.astro';
   console.log(turtleDataAll); */
 
 // POST REQUEST (COMPLEX QUERIES)
-const sparqlURLQuery = ` CONSTRUCT WHERE { ?subject <http://sparql.xyz/facade-x/data/destination> ?url . } `;
+// const sparqlURLQuery = ` CONSTRUCT WHERE { ?subject <http://sparql.xyz/facade-x/data/destination> ?url . } `;
 // const sparqlQuery = `CONSTRUCT WHERE { ?s ?p ?o . }`;
 /* PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX fx: <http://sparql.xyz/facade-x/ns/> CONSTRUCT { ?document fx:title ?title ; fx:author ?author .} WHERE { ?document a fx:YamlFrontMatter ; rdf:_1 ?content . BIND(REPLACE(STR(?content), "(?s).*title: ([^\n]+).*", "$1") AS ?title) BIND(REPLACE(STR(?content), "(?s).*author: ([^\n]+).*", "$1") AS ?author) } */
 /* PREFIX fx: <http://sparql.xyz/facade-x/ns/>
@@ -45,7 +72,7 @@ WHERE {
 ORDER BY ASC(?created) */
 
 // Send the POST request
-const postResponse = await fetch('https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query', {
+/* const postResponse = await fetch('https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/sparql-query',
@@ -58,8 +85,13 @@ const postResponse = await fetch('https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.ap
   }
 
   const turtleData = await postResponse.text();
-  console.log(turtleData);
+  console.log(turtleData); */
 	
+
+/*   --------------------- SPARQL-ANYTHING tests ------------------ */
+
+
+
 /* const posts = (await getCollection('blog')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 ); */
