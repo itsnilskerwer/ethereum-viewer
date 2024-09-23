@@ -112,8 +112,9 @@ ORDER BY ASC(?date)
  */
 
  const posts = (await getCollection('blog')).sort(
-	(a: { data: { pubDate: number; }; }, b: { data: { pubDate: number; }; }) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
+
 
 ---
 
@@ -293,7 +294,7 @@ ORDER BY ASC(?date)
 			 <section>
 				<h5>Learn about Linked Data keywords:</h5>
 				<ul>
-					{ posts.map((post: { slug: any; data: { heroImage: string | null | undefined; title: unknown; }; }) => (
+					{ posts.map((post) => (
 						<li>
 							<a href={`/${post.slug}/`}>
 								<img width={720} height={360} src={post.data.heroImage} alt="hero image" />
