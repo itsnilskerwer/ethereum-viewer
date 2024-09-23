@@ -3,17 +3,17 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-/* import { getCollection } from 'astro:content'; */
+import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 
 // SPARQL QUERIES: Return all triples
-   const query = `
+  /*  const query = `
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 	PREFIX dcterms: <http://purl.org/dc/terms/>
 	PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 	PREFIX gist:    <https://ontologies.semanticarts.com/o/gistCore/>
     CONSTRUCT WHERE { ?s ?p ?o . }
-  `;  
+  `;   */
   
 
   // MORE COMPLEX QUERIES
@@ -93,7 +93,7 @@ ORDER BY ASC(?date)
  `; */
 		   
 
-  const url = "https://localhost:3030/EIPS/sparql";
+/*   const url = "http://localhost:3030/EIPS/sparql";
   
   const response = await fetch(url, {
     method: "POST",
@@ -108,13 +108,12 @@ ORDER BY ASC(?date)
   }
   console.log(response);
   const turtleData = await response.text(); // or .json() 
-  // console.log(turtleData);
 
+ */
 
-
-/* const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection('blog')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-); */
+);
 
 ---
 
@@ -195,26 +194,23 @@ ORDER BY ASC(?date)
 	<body>
 		<Header />
 		<main>
-			<!-- <section>
+			<section>
+				<h2>This website is a guidance resource for EIP research using Linked Data</h2>
+				<p class="date"><FormattedDate date={new Date()} /></p>
+			</section>
+			 <section>
 				<ul>
 					{ posts.map((post) => (
 						<li>
 							<a href={`/${post.slug}/`}>
 								<img width={720} height={360} src={post.data.heroImage} alt="hero image" />
 								<h4 class="title">{post.data.title}</h4>
-								<p class="date">
-									<FormattedDate date={post.data.pubDate} />
-								</p>
 							</a>
 						</li>
 					))}
 				</ul>
-			</section> -->
-			<section>
-				<h2>Turtle Textarea</h2>
-				<p class="date"><FormattedDate date={new Date()} /></p>
-				<textarea id="turtle-textarea" readonly>{turtleData}</textarea>
-			</section>
+			</section> 
+			
 		</main>
 		<Footer />
 	</body>
