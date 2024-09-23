@@ -6,10 +6,89 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 /* import { getCollection } from 'astro:content'; */
 import FormattedDate from '../components/FormattedDate.astro';
 
-  const query = `
+// SPARQL QUERIES: Return all triples
+   const query = `
    CONSTRUCT WHERE { ?s ?p ?o . }
-  `;
+  `;  
   
+
+  // MORE COMPLEX QUERIES
+
+
+  // ALL TRIPLES FOR A PARTICULAR EIP e.g. EIP 100
+/*   const query = `
+  PREFIX dcterms: <http://purl.org/dc/terms/>
+ CONSTRUCT WHERE { ?s dcterms:identifier "100" . } 
+`;  */
+
+
+
+// ALL DIFFS FOR A PARTICULAR EIP e.g. EIP 100
+
+
+// ALL DIFFS BEFORE A PARTICULAR EIP e.g. EIP 100
+	  
+
+// ALL THE DATES THAT HAD COMMITS TO A PARTICULAR EIP e.g. EIP 100 AND THEIR RESPECTIVE CHANGES
+
+
+// Authors of all EIPS in status: Standard Track 
+/*  const query = `
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX gist: <https://ontologies.semanticarts.com/gist/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+CONSTRUCT 
+WHERE {
+  ?s dcterms:type "Standards Track" ;
+     ?p ?o .
+ 
+} 
+		   `; */
+		   
+// todo:pecial handling for author blank nodes suboptimal
+// works in the browser but not from http fetch
+/*   const query = `
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX gist: <https://ontologies.semanticarts.com/gist/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+CONSTRUCT {
+  ?s gist:hasParticipant ?author .
+  ?author a gist:Agent ;
+          foaf:name ?name ;
+          foaf:mbox ?mbox .
+	}
+WHERE {
+  ?s dcterms:type "Standards Track" ;
+     ?p ?o ;
+     gist:hasParticipant ?author .
+  ?author foaf:name ?name ;
+          foaf:mbox ?mbox .
+} 	   
+		   `;  */
+
+// Retrieve all "Status: Active" EIPS and order in dcterms:date in Asc 
+/*  const query = `
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX gist: <https://ontologies.semanticarts.com/gist/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+CONSTRUCT {
+  ?eip dc:title ?title ;
+       dc:date ?date .
+
+}
+WHERE {
+  ?eip dcterms:type "Standards Track" ;
+       dc:title ?title ;
+       dc:date ?date .
+}
+ORDER BY ASC(?date)
+ `; */
+		   
+
   const url = "http://localhost:3030/EIPS/sparql";
   
   const response = await fetch(url, {
@@ -25,70 +104,7 @@ import FormattedDate from '../components/FormattedDate.astro';
   }
   console.log(response);
   const turtleData = await response.text(); // or .json() 
-  console.log(turtleData);
-
-
-
-
-
-/*   --------------------- SPARQL-ANYTHING tests ------------------ */
-
-// GET REQUEST (SIMPLE QUERIES)
-
-// const encodedGetQuery = encodeURIComponent('CONSTRUCT WHERE { ?s ?p ?o . }'); // SELECT returns tabular format e.g. csv
-// const url = `https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query?query=${encodedGetQuery}`;
-
-// Send the GET request
- /*  const getResponse = await fetch(url, {
-    method: 'GET',
-    headers: {
-      // 'Accept': 'application/sparql-results+json', 
-	  'Accept': 'text/turtle',
-    },
-  });
-  if (!getResponse.ok) {
-    throw new Error(`Response status: ${getResponse.status}`);
-  }
-  // const jsonData = await response.json(); // Handle JSON response
-  const turtleDataAll = await getResponse.text(); // Handle Turtle response as text
-  console.log(turtleDataAll); */
-
-// POST REQUEST (COMPLEX QUERIES)
-// const sparqlURLQuery = ` CONSTRUCT WHERE { ?subject <http://sparql.xyz/facade-x/data/destination> ?url . } `;
-// const sparqlQuery = `CONSTRUCT WHERE { ?s ?p ?o . }`;
-/* PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX fx: <http://sparql.xyz/facade-x/ns/> CONSTRUCT { ?document fx:title ?title ; fx:author ?author .} WHERE { ?document a fx:YamlFrontMatter ; rdf:_1 ?content . BIND(REPLACE(STR(?content), "(?s).*title: ([^\n]+).*", "$1") AS ?title) BIND(REPLACE(STR(?content), "(?s).*author: ([^\n]+).*", "$1") AS ?author) } */
-/* PREFIX fx: <http://sparql.xyz/facade-x/ns/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-CONSTRUCT {
-  ?document fx:author ?author ;
-            fx:created ?created .
-} 
-WHERE {
-  ?document rdf:type fx:Document ;
-            fx:author ?author ;
-            fx:created ?created .
-}
-ORDER BY ASC(?created) */
-
-// Send the POST request
-/* const postResponse = await fetch('https://sturdy-bassoon-x4wj6jjwxrcv9wr-8080.app.github.dev/jakarta-example/eip-sparql-query', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/sparql-query',
-      'Accept': 'text/turtle'
-    },
-    body: sparqlURLQuery
-  });
-  if (!postResponse.ok) {
-    throw new Error(`Response status: ${postResponse.status}`);
-  }
-
-  const turtleData = await postResponse.text();
-  console.log(turtleData); */
-	
-
-/*   --------------------- SPARQL-ANYTHING tests ------------------ */
+  // console.log(turtleData);
 
 
 
