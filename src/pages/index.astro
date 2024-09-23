@@ -111,7 +111,9 @@ ORDER BY ASC(?date)
 
  */
 
-const posts = await getCollection('blog');
+ const posts = (await getCollection('blog')).sort(
+	(a: { data: { pubDate: number; }; }, b: { data: { pubDate: number; }; }) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
 
 ---
 
