@@ -1,3 +1,3 @@
-RFC Ethereum project
+# RFC Ethereum project (Under development)
 
-Under development...
+For personal research purposes only.

@@ -111,9 +111,7 @@ ORDER BY ASC(?date)
 
  */
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+const posts = await getCollection('blog');
 
 ---
 
@@ -125,6 +123,61 @@ const posts = (await getCollection('blog')).sort(
 			main {
 				width: 960px;
 			}
+			section {
+				padding: 1rem;
+				border-radius: 12px;
+				margin-bottom: 2rem;
+				box-shadow: 0 2px 5px var(--box-shadow);
+			}
+
+			section h2 {
+				font-size: 2rem;
+				color: var(--text-color);
+				margin-bottom: 1rem;
+			}
+
+			.instructions {
+				text-align: left;
+			}
+
+			.instructions p {
+				margin-bottom: 1rem;
+				font-size: 1.2rem;
+				line-height: 1.6;
+			}
+
+			.instructions summary {
+				font-weight: bold;
+				font-size: 1.5rem;
+				cursor: pointer;
+				margin-top: 1rem;
+				color: var(--text-color);
+			}
+
+			.instructions details {
+				margin-bottom: 1.5rem;
+				padding: 1rem;
+				border-radius: 8px;
+				border: 1px solid rgb(var(--gray));
+				text-align: left;
+				box-shadow: 0 2px 4px var(--box-shadow);
+			}
+
+			.instructions summary:hover {
+				color: var(--hover-color);
+			}
+
+			.instructions ul {
+				list-style: none;
+				padding: 0;
+			}
+
+			.instructions li {
+				margin-bottom: 0.5rem;
+				font-size: 1.1rem;
+				color: var(--text-color);
+			}
+
 			ul {
 				display: flex;
 				flex-wrap: wrap;
@@ -134,13 +187,13 @@ const posts = (await getCollection('blog')).sort(
 				padding: 0;
 			}
 			ul li {
-				width: calc(50% - 1rem);
+				width: calc(23% - 1rem);
 			}
 			ul li * {
 				text-decoration: none;
 				transition: 0.2s ease;
 			}
-			ul li:first-child {
+			/* ul li:first-child {
 				width: 100%;
 				margin-bottom: 1rem;
 				text-align: center;
@@ -150,7 +203,7 @@ const posts = (await getCollection('blog')).sort(
 			}
 			ul li:first-child .title {
 				font-size: 2.369rem;
-			}
+			} */
 			ul li img {
 				margin-bottom: 0.5rem;
 				border-radius: 12px;
@@ -182,12 +235,12 @@ const posts = (await getCollection('blog')).sort(
 					width: 100%;
 					text-align: center;
 				}
-				ul li:first-child {
+				/* ul li:first-child {
 					margin-bottom: 0;
 				}
 				ul li:first-child .title {
 					font-size: 1.563em;
-				}
+				} */
 			}
 		</style>
 	</head>
@@ -195,12 +248,50 @@ const posts = (await getCollection('blog')).sort(
 		<Header />
 		<main>
 			<section>
-				<h2>This website is a guidance resource for EIP research using Linked Data</h2>
+				<h3>This website is a teaching resource to assist EIP research using Linked Data.</h3>
 				<p class="date"><FormattedDate date={new Date()} /></p>
 			</section>
+		
+			<section>
+				<h5>Features</h3>
+				<p/>
+					<li>
+						EIP Dataset in Turtle format that can be queried with SPARQL
+					</li>
+					<li>
+
+					</li>
+				</p>
+			</section>
+			  <section>
+				<h5>Take part in the A/B Test Protocol:</h5>
+				<div class="instructions">
+				  <p>The goal of this test is to measure the ease of using this website as an EIP research tool. You have 30 minutes work on each Protocol. Please start with the Protocol that is displayed first (the order in which Protocols are displayed is randomized to reduce any order bias). Read and follow the instructions closely. After 30 minutes, click the link to fill out the survey.</p>
+				  <details>
+					<summary><span class="icon"></span>Instructions for Protocol A</summary>
+					<p>First of all, get comfortable with the RDF and SPARQL concepts by reading through the provided Links, Examples and Explainers. The goal of this protocol is to use the provided RDF and SPARQL guidance to answer some questions about EIP XXX. If you feel ready, start a 30 min. timer and try to answer the following questions:</p>
+					<ul>
+					  <li>1. When was EIP XXX created?</li>
+					  <li>2. List all authors that have worked on the EIP XXX resource?</li>
+					  <li>3. What was the last update to this EIP resource?</li>
+					</ul>
+				  </details>
+		
+				  <details>
+					<summary><span class="icon"></span>Instructions for Protocol B</summary>
+					<p>First of all, get comfortable with the links provided on this website (e.g. Visit the official Ethereum EIP website). The goal of this protocol is for you to use all and any research tools that you usually would when conducting research. If you feel ready, start a 30 min. timer and try to answer the following questions:</p>
+					<ul>
+						<li>1. When was EIP XXX created?</li>
+						<li>2. List all authors that have worked on the EIP XXX resource?</li>
+						<li>3. What was the last update to this EIP resource?</li>
+					</ul>
+				  </details>
+						</div>
+			  </section>
 			 <section>
+				<h5>Learn about Linked Data keywords:</h5>
 				<ul>
-					{ posts.map((post) => (
+					{ posts.map((post: { slug: any; data: { heroImage: string | null | undefined; title: unknown; }; }) => (
 						<li>
 							<a href={`/${post.slug}/`}>
 								<img width={720} height={360} src={post.data.heroImage} alt="hero image" />
