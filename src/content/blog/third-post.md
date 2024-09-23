@@ -1,7 +1,7 @@
 ---
 title: 'What is SPARQL?'
 description: 'Explainer for SPARQL'
-pubDate: 'Sep 23 2024'
+pubDate: 'Sep 22 2024'
 heroImage: 'blog-placeholder-2.jpg'
 ---
 SPARQL is the query language for RDF, allowing you to extract specific data from an RDF dataset by querying for specific triples.
