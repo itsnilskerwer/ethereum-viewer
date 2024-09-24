@@ -4,8 +4,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
-
+/* import FormattedDate from '../components/FormattedDate.astro';
+ */
 // SPARQL QUERIES: Return all triples
   /*  const query = `
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -251,24 +251,30 @@ ORDER BY ASC(?date)
 		<Header />
 		<main>
 			<section>
-				<h3>This website is a resource to assist EIP research using Linked Data.</h3>
-				<p class="date"><FormattedDate date={new Date()} /></p>
+				<h3>EIP research hub</h3>
+				<!-- <p class="date"><FormattedDate date={new Date()} /></p> -->
 			</section>
 		
 			<section>
-				<h5>Features</h3>
-				<p/>
-					<li>
-						EIP Dataset (https://github.com/itsnilskerwer/eip-rdf/blob/main/EIPS.ttl)
-					</li>
-					<li>
-						EIP resources and links to EIP resources
-					</li>
-					<li>
-						A test protocol for evaluation purposes
-					</li>
+				<h5>Project</h3>
+				<p/> 
+				This project aims to assist EIP research using Linked Data methods.
 				</p>
 			</section>
+			<section>
+				<h5>Highlighted Links</h3>
+				<li> 
+					ERC-777 dataset with example SPARQL queries publicly available on
+ 			<a href="https://github.com/itsnilskerwer/eip-rdf/blob/main/EIPS.ttl">GitHub</a>.
+			
+				</li>	
+				<p/>
+				The dataset contains information about ERC-777 that can be queried using the SPARQL language. 
+				The SPARQL endpoint (running locally) is available at: (http://localhost:3030/EIPS/sparql).
+				It can be queries like this:
+				</p>
+			</section>
+			
 			  
 			 <section>
 				<h5>Learn about Linked Data keywords:</h5>
@@ -286,23 +292,31 @@ ORDER BY ASC(?date)
 			<section>
 				<h5>Take part in the A/B Test Protocol:</h5>
 				<div class="instructions">
-				  <p>The goal of this test is to measure the ease of using this website as an EIP research tool. You have 30 minutes work on each Protocol. Please start with the Protocol that is displayed first (the order in which Protocols are displayed is randomized to reduce any order bias). Read and follow the instructions closely. After 30 minutes, click the link to fill out the survey.</p>
+				  <p>First of all, get comfortable with the RDF and SPARQL concepts by reading through the provided Links, Examples and Explainers. 
+					The goal of this test is to evaluate the ease of using the ERC-777 dataset as an EIP research tool. 
+					ERC-777 is of particular interest to EIP researchers because it defines a token standard used in smart contracts. Since this is used for financial transactions, security is a critical issue. 
+					Start by opening one of the Protocols (the order in which Protocols are displayed is randomized to reduce bias). After completing a protocol, click the survey button, to answer some questions anonimously.
+				  </p>
 				  <details>
 					<summary><span class="icon"></span>Instructions for Protocol A</summary>
-					<p>First of all, get comfortable with the RDF and SPARQL concepts by reading through the provided Links, Examples and Explainers. The goal of this protocol is to use the provided RDF and SPARQL guidance to answer some questions about EIP XXX. If you feel ready, start a 30 min. timer and try to answer the following questions:</p>
+					<p>The goal of this protocol is to send SPARQL queries to the dataset and answer some questions about ERC-777. 
+						If you feel ready, start a 30 min. timer and try to answer the following questions. Note down your answers anywhere e.g. on a piece of paper.
+					</p>
 					<ul>
-					  <li>1. When was EIP XXX created?</li>
-					  <li>2. List all authors that have worked on the EIP XXX resource?</li>
+					  <li>1. When was ERC-777 first proposed?</li>
+					  <li>2. When was this resource moved to status "Final"?</li>
 					  <li>3. What was the last update to this EIP resource?</li>
 					</ul>
 				  </details>
 		
 				  <details>
 					<summary><span class="icon"></span>Instructions for Protocol B</summary>
-					<p>First of all, get comfortable with the links provided on this website (e.g. Visit the official Ethereum EIP website). The goal of this protocol is for you to use all and any research tools that you usually would when conducting research. If you feel ready, start a 30 min. timer and try to answer the following questions:</p>
+					<p>The goal of this protocol is for you to use all and any research tools that you usually would, when conducting research. 
+						If you feel ready, start a 30 min. timer and try to answer the following questions. Note down your answers anywhere e.g. on a piece of paper.
+					</p>
 					<ul>
-						<li>1. When was EIP XXX created?</li>
-						<li>2. List all authors that have worked on the EIP XXX resource?</li>
+						<li>1. When was ERC-777 first proposed?</li>
+						<li>2. When was this resource moved to status "Final"?</li>
 						<li>3. What was the last update to this EIP resource?</li>
 					</ul>
 				  </details>
