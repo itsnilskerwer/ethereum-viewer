@@ -16,100 +16,6 @@ import { getCollection } from 'astro:content';
   `;   */
   
 
-  // MORE COMPLEX QUERIES
-
-
-  // ALL TRIPLES FOR A PARTICULAR EIP e.g. EIP 100
-/*   const query = `
-  PREFIX dcterms: <http://purl.org/dc/terms/>
- CONSTRUCT WHERE { ?s dcterms:identifier "100" . } 
-`;  */
-
-
-
-// ALL DIFFS FOR A PARTICULAR EIP e.g. EIP 100
-
-
-// ALL DIFFS BEFORE A PARTICULAR EIP e.g. EIP 100
-	  
-
-// ALL THE DATES THAT HAD COMMITS TO A PARTICULAR EIP e.g. EIP 100 AND THEIR RESPECTIVE CHANGES
-
-
-// Authors of all EIPS in status: Standard Track 
-/*  const query = `
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX gist: <https://ontologies.semanticarts.com/gist/>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-CONSTRUCT 
-WHERE {
-  ?s dcterms:type "Standards Track" ;
-     ?p ?o .
- 
-} 
-		   `; */
-		   
-// todo:pecial handling for author blank nodes suboptimal
-// works in the browser but not from http fetch
-/*   const query = `
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX gist: <https://ontologies.semanticarts.com/gist/>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-CONSTRUCT {
-  ?s gist:hasParticipant ?author .
-  ?author a gist:Agent ;
-          foaf:name ?name ;
-          foaf:mbox ?mbox .
-	}
-WHERE {
-  ?s dcterms:type "Standards Track" ;
-     ?p ?o ;
-     gist:hasParticipant ?author .
-  ?author foaf:name ?name ;
-          foaf:mbox ?mbox .
-} 	   
-		   `;  */
-
-// Retrieve all "Status: Active" EIPS and order in dcterms:date in Asc 
-/*  const query = `
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX gist: <https://ontologies.semanticarts.com/gist/>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-
-CONSTRUCT {
-  ?eip dc:title ?title ;
-       dc:date ?date .
-
-}
-WHERE {
-  ?eip dcterms:type "Standards Track" ;
-       dc:title ?title ;
-       dc:date ?date .
-}
-ORDER BY ASC(?date)
- `; */
-		   
-
-/*   const url = "http://localhost:3030/EIPS/sparql";
-  
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/sparql-query",
-	  "Accept": "text/turtle"
-    },
-    body: query,
-  });
-  if (!response.ok) {
-    throw new Error(`Response status: ${response.status}`);
-  }
-  console.log(response);
-  const turtleData = await response.text(); // or .json() 
-
- */
 
  const posts = (await getCollection('blog')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
@@ -253,26 +159,31 @@ ORDER BY ASC(?date)
 			<section>
 				<h3>EIP research hub</h3>
 				<!-- <p class="date"><FormattedDate date={new Date()} /></p> -->
+				<p/> 
+				This project aims to assist EIP research using Linked Data methods. A dataset containing information about ERC-777 is made available for query with SPARQL locally (available at: (http://localhost:3030/EIPS/sparql).
+				</p>
+				<p>Check out the resources below to learn how to query this dataset.</p>
 			</section>
 		
 			<section>
-				<h5>Project</h3>
-				<p/> 
-				This project aims to assist EIP research using Linked Data methods.
-				</p>
-			</section>
-			<section>
 				<h5>Highlighted Links</h3>
 				<li> 
-					ERC-777 dataset with example SPARQL queries publicly available on
- 			<a href="https://github.com/itsnilskerwer/eip-rdf/blob/main/EIPS.ttl">GitHub</a>.
+					ERC-777 dataset with example SPARQL queries publicly available on Github: 
+ 			<a href="https://github.com/itsnilskerwer/eip-rdf/blob/main/EIPS.ttl">Visit</a>.
 			
 				</li>	
-				<p/>
-				The dataset contains information about ERC-777 that can be queried using the SPARQL language. 
-				The SPARQL endpoint (running locally) is available at: (http://localhost:3030/EIPS/sparql).
-				It can be queries like this:
-				</p>
+				<li>
+					Source code for the triplification of EIP-related information, written in Java, available on Github:
+					<a href="https://github.com/itsnilskerwer/rfc-eth-jakarta">Visit</a>
+				</li>
+				<li>
+					A syntax checker for turtle (copy and paste RDF triples):
+					<a href="http://ttl.summerofcode.be">Visit</a>
+				</li>
+				<li>
+					Visualizer (copy and paste RDF triples) by Finish research group: 
+					<a href="https://www.ldf.fi/service/rdf-grapher">Visit</a>.
+				</li>
 			</section>
 			
 			  
