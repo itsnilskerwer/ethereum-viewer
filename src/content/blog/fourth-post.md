@@ -8,3 +8,4 @@ EIPs (Ethereum Implementation Proposals) go through several stages from proposed
 
 ERC-777 for example, defines a token standard that is used in Ethereum Smart Contracts.
 
+ALL EIPs (including all ERCs) are available at https://eips.ethereum.org

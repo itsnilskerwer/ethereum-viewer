@@ -8,7 +8,17 @@ RDF (Resource Description Framework) is a data model that structures data as sem
 
 Triples are made up of subject, predicate, object ```< s, p, o . >```.
 
-For example, if i want to say "Bob knows John" in RDF syntax, I would write: 
-```http://example.name#BobSmith12 http://xmlns.com/foaf/0.1/knows http://example.name#JohnDoe34.```
+For example, if i want to say "Bob knows John" in RDF syntax, I would write:
 
-Turtle (Terse RDF Triple Language) is a compact syntax for expressing RDF data. Therefore turtle is simply a shorthand form for writing RDF data.
+```RDF
+<http://example.name#BobSmith12> <http://xmlns.com/foaf/0.1/knows> <http://example.name#JohnDoe34>.
+````
+
+Turtle (Terse RDF Triple Language) is simply a more compact syntax for expressing RDF data, if multiple triples use the same subjects. Therefore Turtle is simply a shorthand form for writing RDF data and we can still call our data "RDF" if it is written in Turtle format.
+
+Another thing we can do is define our vocabularies (or namespaces) that we use for describing relationships. There are plenty of well-written vocabularies available on the internet for re-use. In the example above, we could define the namespace of the FOAF (Friend of a Friend) vocabulary with a "@prefix" keyword. This would then look like this:
+
+```RDF
+@prefix foaf: <http://xmlns.com/foaf/0.1/>
+<http://example.name#BobSmith12> foaf:knows <http://example.name#JohnDoe34>.
+```

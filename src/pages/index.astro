@@ -96,7 +96,7 @@ import { getCollection } from 'astro:content';
 				padding: 0;
 			}
 			ul li {
-				width: calc(23% - 1rem);
+				width: calc(50% - 1rem);
 			}
 			ul li * {
 				text-decoration: none;
@@ -160,29 +160,26 @@ import { getCollection } from 'astro:content';
 				<h3>EIP research hub</h3>
 				<!-- <p class="date"><FormattedDate date={new Date()} /></p> -->
 				<p/> 
-				This project aims to assist EIP research using Linked Data methods. A dataset containing information about ERC-777 is made available for query with SPARQL locally (available at: (http://localhost:3030/EIPS/sparql).
-				</p>
-				<p>Check out the resources below to learn how to query this dataset.</p>
+				This project aims to assist EIP research using Linked Data methods. Check out the resources below to learn how to query this dataset.</p>
 			</section>
 		
 			<section>
 				<h5>Highlighted Links</h3>
 				<li> 
-					ERC-777 dataset with example SPARQL queries publicly available on Github: 
- 			<a href="https://github.com/itsnilskerwer/eip-rdf/blob/main/EIPS.ttl">Visit</a>.
-			
+					<a href="https://github.com/itsnilskerwer/eip-rdf/blob/main/EIPS.ttl">Visit</a>
+					ERC-777 dataset with example SPARQL queries publicly available on Github. 
 				</li>	
 				<li>
-					Source code for the triplification of EIP-related information, written in Java, available on Github:
 					<a href="https://github.com/itsnilskerwer/rfc-eth-jakarta">Visit</a>
+					Source code for the triplification of EIP-related information, written in Java, available on Github.
 				</li>
 				<li>
-					A syntax checker for turtle (copy and paste RDF triples):
 					<a href="http://ttl.summerofcode.be">Visit</a>
+					A syntax checker for Turtle format (copy and paste your RDF triples).
 				</li>
 				<li>
-					Visualizer (copy and paste RDF triples) by Finish research group: 
-					<a href="https://www.ldf.fi/service/rdf-grapher">Visit</a>.
+					<a href="https://www.ldf.fi/service/rdf-grapher">Visit</a>
+					Visualizer by a Finish research group (copy and paste your RDF triples). 
 				</li>
 			</section>
 			
@@ -204,32 +201,32 @@ import { getCollection } from 'astro:content';
 				<h5>Take part in the A/B Test Protocol:</h5>
 				<div class="instructions">
 				  <p>First of all, get comfortable with the RDF and SPARQL concepts by reading through the provided Links, Examples and Explainers. 
-					The goal of this test is to evaluate the ease of using the ERC-777 dataset as an EIP research tool. 
-					ERC-777 is of particular interest to EIP researchers because it defines a token standard used in smart contracts. Since this is used for financial transactions, security is a critical issue. 
-					Start by opening one of the Protocols (the order in which Protocols are displayed is randomized to reduce bias). After completing a protocol, click the survey button, to answer some questions anonimously.
+					ERC-777 is of particular interest to EIP researchers because it defines a token standard used in smart contracts. Security of token standards is a critical research issue. 
+					Start with any protocol.
 				  </p>
 				  <details>
 					<summary><span class="icon"></span>Instructions for Protocol A</summary>
-					<p>The goal of this protocol is to send SPARQL queries to the dataset and answer some questions about ERC-777. 
-						If you feel ready, start a 30 min. timer and try to answer the following questions. Note down your answers anywhere e.g. on a piece of paper.
+					<p>The goal of this test is to evaluate the ease of using the ERC-777 dataset as an EIP research tool. Send SPARQL queries to the dataset and analyze the results to answer some questions about ERC-777. 
+						If you feel ready, start a 15 min. timer and try to answer the following questions. Note down your answers anywhere e.g. on a piece of paper. 
+						Hint: Example queries can be found at https://github.com/itsnilskerwer/eip-rdf/tree/main.
 					</p>
 					<ul>
-					  <li>1. When was ERC-777 first proposed?</li>
-					  <li>2. When was this resource moved to status "Final"?</li>
-					  <li>3. What was the last update to this EIP resource?</li>
+					  <li>1. Who are the authors that have participated or contributed to ERC-777?</li>
+					  <li>2. What was the last update to ERC-777 (changes from the latest commit)?</li>
 					</ul>
+					<p>After completing the protocol, click the survey button, to answer some questions anonimously.</p>
 				  </details>
 		
 				  <details>
 					<summary><span class="icon"></span>Instructions for Protocol B</summary>
 					<p>The goal of this protocol is for you to use all and any research tools that you usually would, when conducting research. 
-						If you feel ready, start a 30 min. timer and try to answer the following questions. Note down your answers anywhere e.g. on a piece of paper.
+						If you feel ready, start a 15 min. timer and try to answer the following questions. Note down your answers anywhere e.g. on a piece of paper. 
 					</p>
 					<ul>
-						<li>1. When was ERC-777 first proposed?</li>
-						<li>2. When was this resource moved to status "Final"?</li>
-						<li>3. What was the last update to this EIP resource?</li>
+						<li>1. Who are the authors that have participated or contributed to ERC-777?</li>
+					  <li>2. What was the last update to ERC-777 (changes from the latest commit)?</li>
 					</ul>
+					<p>After completing the protocol, click the survey button, to answer some questions anonimously.</p>
 				  </details>
 						</div>
 			  </section>
