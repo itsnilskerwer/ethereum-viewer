@@ -2,14 +2,14 @@
 title: 'What is Linked Data?'
 description: 'Explainer for Linked Data'
 pubDate: 'Sep 22 2024'
-heroImage: 'mental_model.png'
+heroImage: 'mental_model_rfc.png'
 ---
-Linked Data is a term that arose from the Semantic Web movement, which aims to describe data on the web, sothat it is machine- and human-readable.
+Linked Data is a term from the Semantic Web movement. The goal of Linked Data is to make data on the web machine-readable using existing web standards.
 
-To achieve this, one has to use current Web standards, like RDF (Resource Description Framework) and SPARQL (Query Language for RDF data).
+Current Web standards, like RDF (Resource Description Framework) and SPARQL (Query Language for RDF data) are used to create Linked Data.
 
-Linked Data is a method of connecting structured data on the web, allowing data from different sources to be easily combined and queried.
+Linked Data allows data from different sources to be easily aggregated into a single dataset, that can be queried using SPARQL.
 
-For the ERC-777 dataset, we can visualize the entire dataset (even though it is more useful to query the dataset with SPARQL). The following image has been created by pasting all triples from the ERC-777 dataset into the tool found at [RDF Grapher](https://www.ldf.fi/service/rdf-grapher):
+For the presented EIP dataset, we can visualize the relationships inside the dataset (even though it is more useful to query the dataset with SPARQL). The following image has been created by pasting all triples from the EIP dataset into the tool found at the [ldf rdf-grapher](https://www.ldf.fi/service/rdf-grapher). Zoom in to see how connected the dataset is.
 
-![ERC-777 dataset visualized](../../../public/image.png)
+![ERC-777 dataset visualized](/src/assets/images/all-images/rdf-grapher-eip-777-new.png)
