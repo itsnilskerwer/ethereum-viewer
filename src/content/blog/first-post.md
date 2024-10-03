@@ -10,6 +10,6 @@ Current Web standards, like RDF (Resource Description Framework) and SPARQL (Que
 
 Linked Data allows data from different sources to be easily aggregated into a single dataset, that can be queried using SPARQL.
 
-For the presented EIP dataset, we can visualize the relationships inside the dataset (even though it is more useful to query the dataset with SPARQL). The following image has been created by pasting all triples from the EIP dataset into the tool found at the [ldf rdf-grapher](https://www.ldf.fi/service/rdf-grapher). Zoom in to see how connected the dataset is.
+For the presented EIP dataset, we can visualize the relationships inside the dataset (even though it is more useful to query the dataset with SPARQL). The following image has been created by pasting all triples from the EIP dataset into the tool found at the [ldf rdf-grapher](https://www.ldf.fi/service/rdf-grapher). Zoom in to see the connections.
 
-![ERC-777 dataset visualized](../assets/images/all-images/rdf-grapher-eip-777-new.png)
+![ERC-777 dataset visualized](../../assets/images/all-images/rdf-grapher-eip-777-new.png)
