@@ -4,23 +4,10 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
-/* import FormattedDate from '../components/FormattedDate.astro';
- */
-// SPARQL QUERIES: Return all triples
-  /*  const query = `
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-	PREFIX dcterms: <http://purl.org/dc/terms/>
-	PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
-	PREFIX gist:    <https://ontologies.semanticarts.com/o/gistCore/>
-    CONSTRUCT WHERE { ?s ?p ?o . }
-  `;   */
-  
-
 
  const posts = (await getCollection('blog')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
-
 
 ---
 
@@ -167,11 +154,12 @@ import { getCollection } from 'astro:content';
 				<h5>Highlighted Links</h3>
 				<li> 
 					<a href="https://github.com/itsnilskerwer/eip-rdf/blob/main/EIPS.ttl">Visit</a>
-					ERC-777 dataset with example SPARQL queries publicly available on Github. 
+					EIP dataset for ERC-777 publicly available on Github. 
 				</li>	
 				<li>
-					<a href="https://github.com/itsnilskerwer/rfc-eth-jakarta">Visit</a>
-					Source code for the triplification of EIP-related information, written in Java, available on Github.
+					<a href="https://github.com/itsnilskerwer/eip-rdf">Visit</a>
+					Source code for the triplification of EIP-related information, written in Java, available on Github. 
+					Repository includes curated SPARQL queries and instructions for querying the EIP dataset using cURL.
 				</li>
 				<li>
 					<a href="http://ttl.summerofcode.be">Visit</a>
@@ -202,7 +190,7 @@ import { getCollection } from 'astro:content';
 				<div class="instructions">
 				  <p>First of all, get comfortable with the RDF and SPARQL concepts by reading through the provided Links, Examples and Explainers. 
 					ERC-777 is of particular interest to EIP researchers because it defines a token standard used in smart contracts. Security of token standards is a critical research issue. 
-					Start with any protocol.
+					If you feel ready, complete ONE of the protocols - choose either Protocol A or Protocol B. Do not look at the other protocol.
 				  </p>
 				  <details>
 					<summary><span class="icon"></span>Instructions for Protocol A</summary>
