@@ -22,3 +22,5 @@ Another thing we can do is define our vocabularies (or namespaces) that we use f
 @prefix foaf: <http://xmlns.com/foaf/0.1/>
 <http://example.name#BobSmith12> foaf:knows <http://example.name#JohnDoe34>.
 ```
+
+RDF can be used to describe all kinds of data. RDF format unpacks the data's meaning for humans and machines, and allows maximum interoperability. Check out an example of an RDF dataset at https://github.com/itsnilskerwer/eip-rdf/blob/main/EIP-777.ttl.
