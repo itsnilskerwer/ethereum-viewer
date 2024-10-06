@@ -147,34 +147,34 @@ import { getCollection } from 'astro:content';
 				<h3>EIP research hub</h3>
 				<!-- <p class="date"><FormattedDate date={new Date()} /></p> -->
 				<p/> 
-				A project to assist EIP research using Linked Data methods. Check out the resources below to learn how to query EIP datasets from a public SPARQL endpoint. Give feedback via the Survey below.</p>
+				A project to assist research on Ethereum Implementation Proposals, using Linked Data methods. Check out the resources below to learn how to query EIP datasets from a public SPARQL endpoint. Feedback welcome via the Survey link.</p>
 			</section>
 			<section>
-				<h5>Highlighted Links</h3>
+				<h5>Research links</h5>
+				<li> 
+					<a href="http://13.49.44.222:3030/EIP-777/sparql">http://13.49.44.222:3030/</a>
+					Public SPARQL endoint for EIP data. 
+				</li>
 				<li> 
 					<a href="https://github.com/itsnilskerwer/eip-rdf/blob/main/EIP-777.ttl">Visit</a>
-					EIP dataset for ERC-777 publicly available on Github. 
+					Underlying dataset (available on Github). 
 				</li>	
 				<li> 
-					<a href="http://13.49.44.222:3030/EIP-777/sparql">Visit</a>
-					Public SPARQL endoint for EIP data. 
-				</li>	
+					<a href="https://github.com/itsnilskerwer/eip-rdf/blob/main/EIP-777.ttl">Visit</a>
+					Source code for creating dataset, written in Java (available on Github).  
+				</li>
 				<li>
 					<a href="https://github.com/itsnilskerwer/eip-rdf">Visit</a>
-					Github repository with curated SPARQL queries and instructions for querying the EIP dataset.
-					Also contains source code for creating RDF from EIP-related information, written in Java. 
+					Curated SPARQL queries and instructions for querying the EIP dataset.
 				</li>
-				<li>
-					<a href="http://ttl.summerofcode.be">Visit</a>
-					A syntax checker for Turtle format (copy and paste your RDF triples).
-				</li>
+				<h5>More useful links</h5>
 				<li>
 					<a href="https://www.ldf.fi/service/rdf-grapher">Visit</a>
 					A RDF data visualizer by a Finish research group (copy and paste your RDF triples). 
 				</li>
 			</section>
 			<section>
-				<h5>Learn about Linked Data keywords:</h5>
+				<h5>Most important keywords explained:</h5>
 				<ul>
 					{ posts.map((post) => (
 						<li>
@@ -185,7 +185,11 @@ import { getCollection } from 'astro:content';
 						</li>
 					))}
 				</ul>
-			</section> 
+			</section>
+			<section>
+				<h5>Take part in an anonymous survey:</h5>
+				<p>Link to survey: <a href="https://rfc-eth-survey.limesurvey.net/221127?lang=en">Survey Link</a></p>
+			</section>
 			<section>
 				<h5>Take part in the A/B Test Protocol:</h5>
 				<div class="instructions">
@@ -217,10 +221,6 @@ import { getCollection } from 'astro:content';
 					<p>After completing the protocol, click the survey button, to answer some questions anonimously.</p>
 				  </details>
 						</div>
-			  </section>
-			  <section>
-				<h5>Take part in an anonymous survey:</h5>
-				<p>Link to survey: <a href="https://rfc-eth-survey.limesurvey.net/221127?lang=en">Survey Link</a></p>
 			  </section>
 		</main>
 		<Footer />
