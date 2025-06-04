@@ -1,5 +1,6 @@
 {
-  "extends": "astro/tsconfigs/strictest",
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
   "compilerOptions": {
     "strictNullChecks": true,
    /*  "target": "ESNext",
@@ -8,6 +9,7 @@
     "esModuleInterop": true  */
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }
